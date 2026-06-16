@@ -10,11 +10,10 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 27, [3, 2]),
-        (28, 28, [3, 2]),
+        (27, 28, [2, 2]),
         (28, 29, [3, 3]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        (1000, 1000, [246, 197])
     ]
 )
 def test_get_human_age(
@@ -23,10 +22,6 @@ def test_get_human_age(
     human_age: tuple[int, int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
-
-
-def test_output_changes() -> None:
-    assert get_human_age(14, 14) != get_human_age(15, 15)
 
 
 @pytest.mark.parametrize(
@@ -39,6 +34,18 @@ def test_output_changes() -> None:
 
     ]
 )
-def test_invalid_type(cat_age, dog_age) -> None:
-    with pytest.raises((TypeError, ValueError)):
+def test_invalid_type(cat_age : int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age", [
+        (-10, 20),
+        (5, -15),
+        (-30, -30)
+    ]
+)
+def test_negative_age(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
