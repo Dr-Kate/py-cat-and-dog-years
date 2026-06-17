@@ -23,7 +23,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     if cat_age < 0 or dog_age < 0:
         raise ValueError
 
-    def convert(age: int, first: int, second:int, step: int) -> int:
+    def convert(age: int, first: int, second: int, step: int) -> int:
         if age < first:
             return 0
         if age < first + second:
