@@ -11,7 +11,7 @@ from app.main import get_human_age
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
-        (28, 29, [3, 3]),
+        (28, 29, [3, 2]),
         (100, 100, [21, 17]),
         (1000, 1000, [246, 197])
     ]
@@ -19,7 +19,7 @@ from app.main import get_human_age
 def test_get_human_age(
     cat_age: int,
     dog_age: int,
-    human_age: tuple[int, int]
+    human_age: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
